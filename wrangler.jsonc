@@ -1,0 +1,48 @@
+{
+  // Cloudflare Workers configuration for byhoward.com
+  // Deploys the static site from ./public plus the /api/lead form endpoint.
+  // Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+  "name": "byhoward",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-06-01",
+
+  // Static site files. Requests that match a file in ./public are served
+  // directly (free, unlimited). Everything else hits src/worker.js.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+
+  // ── Step: D1 database for storing leads ─────────────────────────────
+  // 1. npx wrangler d1 create byhoward-leads
+  // 2. Paste the database_id it prints below, then uncomment.
+  // 3. npx wrangler d1 execute byhoward-leads --remote --file=./schema.sql
+  //
+  // ,"d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "byhoward-leads",
+  //     "database_id": "PASTE-DATABASE-ID-HERE"
+  //   }
+  // ]
+
+  // ── Step: email notifications via Cloudflare Email Routing ──────────
+  // Requires Email Routing enabled on the byhoward.com zone and the
+  // destination address verified. Then uncomment.
+  //
+  // ,"send_email": [
+  //   { "name": "EMAIL", "destination_address": "howdog38@gmail.com" }
+  // ],
+  // "vars": {
+  //   "EMAIL_FROM": "leads@byhoward.com",
+  //   "EMAIL_TO": "howdog38@gmail.com"
+  // }
+
+  // ── Step: Turnstile spam protection (secret side) ───────────────────
+  // Set the secret instead of putting it here:
+  //   npx wrangler secret put TURNSTILE_SECRET_KEY
+}

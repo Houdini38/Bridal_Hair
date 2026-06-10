@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Lead forms — front-end only for now.
-  // TODO: wire to a real backend (Formspree, Netlify Forms, HubSpot, etc.)
+  // Lead forms — submit to the Cloudflare Worker at /api/lead.
   document.querySelectorAll('.js-lead-form').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var status = form.querySelector('.form-status');
+      var button = form.querySelector('button[type="submit"]');
       var invalid = [];
 
       form.querySelectorAll('[required]').forEach(function (field) {
@@ -93,11 +93,33 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
+      var data = { form: form.id };
+      new FormData(form).forEach(function (value, key) { data[key] = value; });
+
       var name = form.querySelector('[name="name"]');
       var first = name && name.value.trim() ? ' ' + name.value.trim().split(' ')[0] : '';
+
       status.classList.remove('error');
-      status.textContent = 'Thanks,' + first + "! We'll be in touch within one business day.";
-      form.querySelector('button[type="submit"]').disabled = true;
+      status.textContent = 'Sending…';
+      button.disabled = true;
+
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Request failed: ' + res.status);
+          return res.json();
+        })
+        .then(function () {
+          status.textContent = 'Thanks,' + first + "! We'll be in touch within one business day.";
+        })
+        .catch(function () {
+          button.disabled = false;
+          status.classList.add('error');
+          status.textContent = "Something went wrong — please email hello@byhoward.com and we'll take care of you.";
+        });
     });
   });
 });
