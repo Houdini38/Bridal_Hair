@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angela Bernard Hair + Brooklyn Beauty — On-Location Bridal &amp; Special Event Hair</title>
+  <meta name="description" content="Angela Bernard and Brooklyn Martinez bring expert on-location hair and makeup styling for weddings, bridal weekends, styled parties, and special events across Denver, Broomfield, and surrounding Colorado venues." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-name">Angela Bernard Hair<br />+ Brooklyn Beauty</span>
+        <span class="brand-tag">On-Location Bridal &amp; Special Event Hair Team</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#weddings">Weddings</a>
+        <a href="#services">Bridal Party</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#availability" class="btn btn-solid header-cta">Check Event Availability</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media" role="img" aria-label="Bridal party getting their hair styled on location"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Traveling Bridal Hair Team</p>
+        <h1>Bridal &amp; Special Event Hair Styling That Travels to You</h1>
+        <p class="hero-lead">
+          Angela Bernard and Brooklyn Martinez bring you expert styling for weddings, bridal
+          weekends, styled parties, and special events across Denver, Broomfield, and
+          surrounding Colorado venues.
+        </p>
+        <div class="hero-actions">
+          <a href="#availability" class="btn btn-solid">
+            Check Event Availability
+            <span class="btn-sub">Let's make it official</span>
+          </a>
+          <a href="#contract" class="btn btn-outline">Download Bridal Contract</a>
+        </div>
+      </div>
+
+      <!-- Inquiry form -->
+      <form class="inquiry-card" id="availability" novalidate>
+        <button type="button" class="card-close" aria-label="Close">&times;</button>
+        <h2 class="inquiry-title">Request Event Availability</h2>
+
+        <label for="event-date">Event Date</label>
+        <input type="date" id="event-date" name="event-date" />
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="City or Venue" />
+
+        <label for="party-size">Party Size</label>
+        <select id="party-size" name="party-size">
+          <option value="" disabled selected>Number of people</option>
+          <option>1 (Bride / Individual)</option>
+          <option>2–4</option>
+          <option>5–8</option>
+          <option>9–12</option>
+          <option>13+</option>
+        </select>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" />
+
+        <button type="submit" class="btn btn-solid btn-block">Submit Inquiry</button>
+        <p class="inquiry-note">We'll respond in 24 hours.</p>
+      </form>
+    </div>
+
+    <!-- Feature bar -->
+    <div class="feature-bar">
+      <div class="container feature-bar-inner">
+        <div class="feature"><span class="feature-icon">&#9906;</span> On-Location Styling</div>
+        <div class="feature"><span class="feature-icon">&#128101;</span> Bridal Parties</div>
+        <div class="feature"><span class="feature-icon">&#9201;</span> Timeline Planning</div>
+        <div class="feature"><span class="feature-icon">&#9992;</span> Colorado Travel</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet Your Stylists -->
+  <section class="stylists" id="weddings">
+    <div class="container">
+      <p class="section-label">Meet Your Stylists</p>
+      <div class="stylist-grid">
+        <article class="stylist-card">
+          <div class="stylist-photo stylist-photo--angela" role="img" aria-label="Angela Bernard"></div>
+          <div class="stylist-info">
+            <h3>Angela Bernard</h3>
+            <p class="stylist-role">Co-Founder &nbsp;|&nbsp; Lead Hair Artist</p>
+            <p class="stylist-bio">
+              Angela is known for timeless, romantic styles and a calm presence that sets the
+              tone for your day.
+            </p>
+          </div>
+        </article>
+        <article class="stylist-card">
+          <div class="stylist-photo stylist-photo--brooklyn" role="img" aria-label="Brooklyn Martinez"></div>
+          <div class="stylist-info">
+            <h3>Brooklyn Martinez</h3>
+            <p class="stylist-role">Co-Founder &nbsp;|&nbsp; Lead Makeup</p>
+            <p class="stylist-bio">
+              Brooklyn creates effortlessly polished looks to enhance your natural beauty.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label">Services</p>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">&#10047;</div>
+          <h3>Wedding Day Hair</h3>
+          <p>Long-lasting, photo-ready styles to love all day.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">&#128131;</div>
+          <h3>Bridal Party Styling</h3>
+          <p>Beautiful, cohesive looks for your whole crew.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">&#10024;</div>
+          <h3>Preview Trials</h3>
+          <p>Preview one-on-one and feel confident every detail is perfect.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">&#9728;</div>
+          <h3>Special Event Styling</h3>
+          <p>Hair styling for galas, parties and life's big moments.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">&#9992;</div>
+          <h3>Travel Services</h3>
+          <p>We bring our beauty to you — Denver, Colorado and beyond.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <h2 class="section-heading">How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-icon">&#128203;</div>
+          <h3>Inquire</h3>
+          <p>Check availability and tell us about your event.</p>
+        </div>
+        <div class="step-arrow">&rsaquo;</div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-icon">&#128197;</div>
+          <h3>Confirm Details</h3>
+          <p>We'll confirm your date and lock in the details.</p>
+        </div>
+        <div class="step-arrow">&rsaquo;</div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-icon">&#128131;</div>
+          <h3>Plan Your Look</h3>
+          <p>Trial (if desired) and timeline planning for a seamless day.</p>
+        </div>
+        <div class="step-arrow">&rsaquo;</div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-icon">&#10024;</div>
+          <h3>Event Day Styling</h3>
+          <p>We arrive on-location and bring your vision to life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-heading">Event Moments</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item g1"></div>
+        <div class="gallery-item g2"></div>
+        <div class="gallery-item g3"></div>
+        <div class="gallery-item g4"></div>
+        <div class="gallery-item g5"></div>
+        <div class="gallery-item g6"></div>
+      </div>
+      <div class="gallery-cta">
+        <a href="#availability" class="btn btn-outline">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Love Notes + FAQ -->
+  <section class="notes-faq">
+    <div class="container notes-faq-grid">
+      <div class="love-notes">
+        <p class="section-label">Love Notes</p>
+        <div class="testimonials">
+          <figure class="testimonial">
+            <blockquote>
+              Angela and Brooklyn are absolute MAGIC! They made me feel (and all of my
+              bridesmaids) so confident. Highly recommend!
+            </blockquote>
+            <figcaption>— Kelsey, Bride</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>
+              Professional, kind, and incredibly talented. They traveled to our venue and
+              handled the hair seamlessly day — no stress.
+            </blockquote>
+            <figcaption>— Maggie, Maid of Honor</figcaption>
+          </figure>
+        </div>
+        <div class="dots" aria-hidden="true">
+          <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="faq" id="faq">
+        <p class="section-label">FAQ</p>
+        <div class="accordion">
+          <details>
+            <summary>Do you travel?</summary>
+            <p>Yes! We're a fully on-location team serving Denver, Broomfield, and venues across Colorado. Travel beyond our home area can be arranged — just ask.</p>
+          </details>
+          <details>
+            <summary>How many people can you style?</summary>
+            <p>From the bride alone to a full bridal party of 13+. Larger parties may add a second stylist to keep your timeline on track.</p>
+          </details>
+          <details>
+            <summary>Where should I book?</summary>
+            <p>Start by requesting availability above. Once your date is confirmed, we'll send a contract to lock everything in.</p>
+          </details>
+          <details>
+            <summary>Do you offer trials?</summary>
+            <p>Absolutely. A preview trial lets us perfect your look and plan the timeline before the big day.</p>
+          </details>
+          <details>
+            <summary>What areas do you serve?</summary>
+            <p>Denver, Broomfield, and surrounding Colorado communities, plus destination requests on a case-by-case basis.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="contract">
+    <div class="container">
+      <h2>Ready to reserve your date?</h2>
+      <p>We can't wait to be part of your day.</p>
+      <div class="hero-actions center">
+        <a href="#availability" class="btn btn-solid">Check Event Availability</a>
+        <a href="#availability" class="btn btn-outline">Download Bridal Contract</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Angela Bernard Hair + Brooklyn Beauty</span>
+        <p>On-Location Bridal &amp; Special Event Hair Team — Denver, Colorado</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#weddings">Weddings</a>
+        <a href="#services">Bridal Party</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year"></span> Angela Bernard Hair + Brooklyn Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
