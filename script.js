@@ -70,25 +70,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Lead form — front-end only for now.
+  // Lead forms — front-end only for now.
   // TODO: wire to a real backend (Formspree, Netlify Forms, HubSpot, etc.)
-  var form = document.getElementById('lead-form');
-  if (form) {
+  document.querySelectorAll('.js-lead-form').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var status = form.querySelector('.form-status');
-      var name = form.querySelector('#name');
-      var email = form.querySelector('#email');
+      var invalid = [];
 
-      if (!name.value.trim() || !email.value.trim() || email.validity.typeMismatch || !email.value.includes('@')) {
-        status.textContent = 'Please add your name and a valid work email.';
-        status.style.color = '#ff8a8a';
+      form.querySelectorAll('[required]').forEach(function (field) {
+        var ok = field.value.trim() !== '';
+        if (ok && field.type === 'email') ok = field.value.includes('@') && !field.validity.typeMismatch;
+        if (ok && field.type === 'url') ok = !field.validity.typeMismatch;
+        field.classList.toggle('field-error', !ok);
+        if (!ok) invalid.push(field);
+      });
+
+      if (invalid.length) {
+        status.textContent = 'Please fill in the highlighted fields.';
+        status.classList.add('error');
+        invalid[0].focus();
         return;
       }
 
-      status.style.color = '';
-      status.textContent = "Thanks, " + name.value.trim().split(' ')[0] + "! We'll be in touch within one business day.";
+      var name = form.querySelector('[name="name"]');
+      var first = name && name.value.trim() ? ' ' + name.value.trim().split(' ')[0] : '';
+      status.classList.remove('error');
+      status.textContent = 'Thanks,' + first + "! We'll be in touch within one business day.";
       form.querySelector('button[type="submit"]').disabled = true;
     });
-  }
+  });
 });
