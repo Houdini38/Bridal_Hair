@@ -1,4 +1,4 @@
-// Angela Bernard Hair + Brooklyn Beauty — interactions
+// byHoward — site interactions
 
 document.addEventListener('DOMContentLoaded', function () {
   // Footer year
@@ -13,41 +13,82 @@ document.addEventListener('DOMContentLoaded', function () {
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
     });
-    nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
-      });
+      }
     });
   }
 
-  // Inquiry form submit (demo handler)
-  var form = document.getElementById('availability');
+  // Scroll-reveal animations
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // Animated stat counters
+  var counters = document.querySelectorAll('.stat-number[data-count]');
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = null;
+    function tick(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      // ease-out
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (counters.length && 'IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { counterObserver.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+    });
+  }
+
+  // Lead form — front-end only for now.
+  // TODO: wire to a real backend (Formspree, Netlify Forms, HubSpot, etc.)
+  var form = document.getElementById('lead-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var email = document.getElementById('email');
-      var date = document.getElementById('event-date');
-      if (!email.value || !date.value) {
-        email.focus();
+      var status = form.querySelector('.form-status');
+      var name = form.querySelector('#name');
+      var email = form.querySelector('#email');
+
+      if (!name.value.trim() || !email.value.trim() || email.validity.typeMismatch || !email.value.includes('@')) {
+        status.textContent = 'Please add your name and a valid work email.';
+        status.style.color = '#ff8a8a';
         return;
       }
-      var btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Thank You — We’ll Be In Touch!';
-      btn.disabled = true;
-      btn.style.background = 'var(--gold-dark)';
-      setTimeout(function () { form.reset(); }, 200);
-    });
-  }
 
-  // Testimonial dots (simple rotation indicator)
-  var dots = document.querySelectorAll('.dots .dot');
-  if (dots.length) {
-    var i = 0;
-    setInterval(function () {
-      dots.forEach(function (d) { d.classList.remove('active'); });
-      i = (i + 1) % dots.length;
-      dots[i].classList.add('active');
-    }, 3500);
+      status.style.color = '';
+      status.textContent = "Thanks, " + name.value.trim().split(' ')[0] + "! We'll be in touch within one business day.";
+      form.querySelector('button[type="submit"]').disabled = true;
+    });
   }
 });

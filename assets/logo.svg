@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="byHoward logo">
+  <!-- Stylized recreation of the byHoward "H" mark. Replace with the original asset if preferred. -->
+  <g>
+    <!-- Left column (navy, folded) -->
+    <polygon points="20,12 42,25 42,60 20,49" fill="#2e3470"/>
+    <polygon points="20,49 42,60 42,88 20,76" fill="#272c61"/>
+    <!-- Right column (teal/cyan, folded) -->
+    <polygon points="80,12 58,25 58,60 80,49" fill="#2dd9c0"/>
+    <polygon points="80,49 58,60 58,88 80,76" fill="#33b3e0"/>
+    <!-- Center crossbar -->
+    <polygon points="42,40 58,40 58,62 42,62" fill="#1fc9b4"/>
+  </g>
+</svg>
